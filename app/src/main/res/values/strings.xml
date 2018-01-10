@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">BaiduMap</string>
+    <string name="app_description">百度地图</string>
+    <string name="bd_location_description">百度地图定位SDK</string>
 </resources>
