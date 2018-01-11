@@ -20,7 +20,7 @@ public class LocationActivity extends AppCompatActivity {
 
     public LocationClient mLocationClient = null;
     private TextView mTvBbdLocation;
-    private CheckBox mCb1, mCb2, mCb3, mCb4, mCb5, mCb6;
+    private CheckBox mCb1, mCb2, mCb3, mCb4, mCb5;
     private StringBuilder sb;
 
     @Override
@@ -35,7 +35,6 @@ public class LocationActivity extends AppCompatActivity {
         mCb3 = (CheckBox) findViewById(R.id.cb3);
         mCb4 = (CheckBox) findViewById(R.id.cb4);
         mCb5 = (CheckBox) findViewById(R.id.cb5);
-        mCb6 = (CheckBox) findViewById(R.id.cb6);
 
     }
 
@@ -163,12 +162,6 @@ public class LocationActivity extends AppCompatActivity {
                     getCb5(bdLocation);
                 }
 
-
-//                sb.append("").append().append("\r\n");
-//                sb.append("").append().append("\r\n");
-//                sb.append("").append().append("\r\n");
-//                sb.append("").append().append("\r\n");
-//                sb.append("").append().append("\r\n");
                 mTvBbdLocation.setText(sb.toString());
             }
 
