@@ -3,4 +3,8 @@
     <string name="app_description">百度地图</string>
     <string name="bd_location_description">百度地图定位SDK</string>
     <string name="btn_location">发起定位获取定位信息</string>
+    <string name="bd_map_description">百度地图地图SDk</string>
+    <string name="btn_change_map">随机切换地图类型</string>
+    <string name="btn_location_map">开启定位</string>
+    <string name="btn_download_map">离线地图</string>
 </resources>

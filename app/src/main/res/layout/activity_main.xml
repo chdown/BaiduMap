@@ -4,15 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="5dp"
+    android:orientation="vertical"
     tools:context="com.example.cs_android.baidumap.activity.MainActivity">
 
     <Button
+        android:layout_margin="5dp"
         android:id="@+id/btn_location"
-        android:onClick="onclick"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/btn_bg_white"
+        android:onClick="onclick"
         android:text="@string/bd_location_description"/>
+
+    <Button
+        android:layout_margin="5dp"
+        android:id="@+id/btn_map"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn_bg_white"
+        android:onClick="onclick"
+        android:text="@string/bd_map_description"/>
 
 </LinearLayout>

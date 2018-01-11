@@ -31,6 +31,18 @@ public class MainActivity extends AppCompatActivity {
         requestPermissions();
     }
 
+    public void onclick(View v) {
+        switch (v.getId()) {
+            case R.id.btn_location:
+                //启动定位页面
+                startCls(LocationActivity.class);
+                break;
+            case R.id.btn_map:
+                startCls(MapActivity.class);
+                break;
+        }
+    }
+
     private void requestPermissions() {
         mRxPermissions = new RxPermissions(MainActivity.this);
         mRxPermissions.requestEach(Manifest.permission.ACCESS_FINE_LOCATION,
@@ -85,14 +97,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void onclick(View v) {
-        switch (v.getId()) {
-            case R.id.btn_location:
-                //启动定位页面
-                startCls(LocationActivity.class);
-                break;
-        }
-    }
+
 
     public void startCls(Class<?> cls) {
         startActivity(new Intent(this, cls));
