@@ -8,21 +8,39 @@
     tools:context="com.example.cs_android.baidumap.activity.MainActivity">
 
     <Button
-        android:layout_margin="5dp"
         android:id="@+id/btn_location"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="5dp"
         android:background="@drawable/btn_bg_white"
         android:onClick="onclick"
         android:text="@string/bd_location_description"/>
 
     <Button
-        android:layout_margin="5dp"
         android:id="@+id/btn_map"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="5dp"
         android:background="@drawable/btn_bg_white"
         android:onClick="onclick"
         android:text="@string/bd_map_description"/>
+
+    <Button
+        android:id="@+id/btn_overlay_map"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="@drawable/btn_bg_white"
+        android:onClick="onclick"
+        android:text="@string/bd_ovelay_map_description"/>
+
+    <Button
+        android:id="@+id/btn_poi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="@drawable/btn_bg_white"
+        android:onClick="onclick"
+        android:text="@string/bd_poi"/>
 
 </LinearLayout>

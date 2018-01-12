@@ -6,17 +6,19 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.example.cs_android.baidumap.activity.MapActivity">
+
     <com.baidu.mapapi.map.TextureMapView
         android:id="@+id/texture_map"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
     </com.baidu.mapapi.map.TextureMapView>
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:layout_alignParentRight="true">
+        android:orientation="vertical">
 
         <Button
             android:id="@+id/btn_change_map"
@@ -27,14 +29,29 @@
             android:text="@string/btn_change_map"
             android:textColor="@android:color/black"/>
 
-        <Button
-            android:id="@+id/btn_location_map"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            android:onClick="onclick"
-            android:text="@string/btn_location_map"
-            android:textColor="@android:color/black"/>
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_location_map"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:onClick="onclick"
+                android:text="@string/btn_location_map"
+                android:textColor="@android:color/black"/>
+            <Button
+                android:id="@+id/btn_close_location_map"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:onClick="onclick"
+                android:text="@string/btn_close_location_map"
+                android:textColor="@android:color/black"/>
+        </LinearLayout>
+
 
         <Button
             android:id="@+id/btn_download_map"

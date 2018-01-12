@@ -49,9 +49,21 @@
             android:process=":remote">
         </service>
 
-        <activity android:name=".activity.MapActivity">
+        <activity
+            android:name=".activity.MapActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         </activity>
         <activity android:name=".activity.OffLineActivity">
+        </activity>
+        <activity
+            android:name=".activity.OverlayActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        </activity>
+        <activity
+            android:name=".activity.PoiActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        </activity>
+        <activity android:name=".activity.RouteActivity">
         </activity>
     </application>
 

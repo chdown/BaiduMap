@@ -40,6 +40,12 @@ public class MainActivity extends AppCompatActivity {
             case R.id.btn_map:
                 startCls(MapActivity.class);
                 break;
+            case R.id.btn_overlay_map:
+                startCls(OverlayActivity.class);
+                break;
+            case R.id.btn_poi:
+                startCls(PoiActivity.class);
+                break;
         }
     }
 
@@ -95,8 +101,6 @@ public class MainActivity extends AppCompatActivity {
             }
         }).show();
     }
-
-
 
 
     public void startCls(Class<?> cls) {

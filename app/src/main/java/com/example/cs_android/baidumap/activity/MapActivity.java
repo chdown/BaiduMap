@@ -13,7 +13,6 @@ import com.baidu.mapapi.SDKInitializer;
 import com.baidu.mapapi.map.BaiduMap;
 import com.baidu.mapapi.map.MapStatus;
 import com.baidu.mapapi.map.MapStatusUpdateFactory;
-import com.baidu.mapapi.map.MyLocationConfiguration;
 import com.baidu.mapapi.map.MyLocationData;
 import com.baidu.mapapi.map.TextureMapView;
 import com.baidu.mapapi.model.LatLng;
@@ -36,9 +35,9 @@ public class MapActivity extends AppCompatActivity {
         setContentView(R.layout.activity_map);
         mMapView = (TextureMapView) findViewById(R.id.texture_map);
         mBaiduMap = mMapView.getMap();
-
     }
 
+    //按钮的单击事件
     public void onclick(View view) {
         switch (view.getId()) {
             //切换地图类型
@@ -57,6 +56,7 @@ public class MapActivity extends AppCompatActivity {
                         break;
                 }
                 break;
+            //定位当前位置
             case R.id.btn_location_map:
                 LocationClientOption option = new LocationClientOption();
                 option.setOpenGps(true); // 打开gps
@@ -67,19 +67,24 @@ public class MapActivity extends AppCompatActivity {
                 /**
                  * 对定位的图标进行配置，需要MyLocationConfiguration实例，这个类是用设置定位图标的显示方式的
                  */
-                MyLocationConfiguration.LocationMode mCurrentMode = MyLocationConfiguration.LocationMode.FOLLOWING;
-                mBaiduMap.setMyLocationConfiguration(new MyLocationConfiguration(
-                        mCurrentMode, true, null));
+//                MyLocationConfiguration.LocationMode mCurrentMode = MyLocationConfiguration.LocationMode.FOLLOWING;
+//                mBaiduMap.setMyLocationConfiguration(new MyLocationConfiguration(
+//                        mCurrentMode, true, null));
                 mBaiduMap.setMyLocationEnabled(true);//开启定位图层
-
                 break;
+            //关闭定位图层
+            case R.id.btn_close_location_map:
+                mBaiduMap.setMyLocationEnabled(false);
+                break;
+            //离线地图
             case R.id.btn_download_map:
-                startActivity(new Intent(MapActivity.this,OffLineActivity.class));
+                startActivity(new Intent(MapActivity.this, OffLineActivity.class));
                 break;
         }
     }
 
 
+    //开启定位的监听器
     private class MyBDAbstractLocationListener extends BDAbstractLocationListener {
         @Override
         public void onReceiveLocation(BDLocation bdLocation) {
