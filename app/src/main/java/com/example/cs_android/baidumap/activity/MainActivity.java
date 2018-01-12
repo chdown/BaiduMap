@@ -33,18 +33,37 @@ public class MainActivity extends AppCompatActivity {
 
     public void onclick(View v) {
         switch (v.getId()) {
+            //启动定位页面
             case R.id.btn_location:
-                //启动定位页面
                 startCls(LocationActivity.class);
                 break;
+            //启动地图显示页面
             case R.id.btn_map:
                 startCls(MapActivity.class);
                 break;
+            //启动地图绘制页面
             case R.id.btn_overlay_map:
                 startCls(OverlayActivity.class);
                 break;
+            //启动POI检索页面
             case R.id.btn_poi:
                 startCls(PoiActivity.class);
+                break;
+            //启动线路规划
+            case R.id.btn_route:
+                startCls(RouteActivity.class);
+                break;
+            //鹰眼轨迹的上传获取显示
+            case R.id.btn_trace:
+                startCls(TraceActivity.class);
+                break;
+            //地理围栏
+            case R.id.btn_rail:
+                startCls(RailActivity.class);
+                break;
+            //导航
+            case R.id.btn_navigation:
+                startCls(NavigationActivity.class);
                 break;
         }
     }

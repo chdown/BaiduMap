@@ -47,6 +47,7 @@ public class PoiActivity extends AppCompatActivity implements View.OnClickListen
     private BaiduMap mBaiduMap;
     private List<LatLng> latLngs = new ArrayList<>();
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -43,4 +43,37 @@
         android:onClick="onclick"
         android:text="@string/bd_poi"/>
 
+    <Button
+        android:id="@+id/btn_route"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="@drawable/btn_bg_white"
+        android:onClick="onclick"
+        android:text="@string/bd_route"/>
+
+    <Button
+        android:id="@+id/btn_trace"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="@drawable/btn_bg_white"
+        android:onClick="onclick"
+        android:text="@string/bd_trace"/>
+    <Button
+        android:id="@+id/btn_rail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="@drawable/btn_bg_white"
+        android:onClick="onclick"
+        android:text="@string/bd_rail"/>
+    <Button
+        android:id="@+id/btn_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="@drawable/btn_bg_white"
+        android:onClick="onclick"
+        android:text="@string/bd_navigation"/>
 </LinearLayout>

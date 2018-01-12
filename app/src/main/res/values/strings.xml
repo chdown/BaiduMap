@@ -10,4 +10,8 @@
     <string name="btn_close_location_map">关闭定位</string>
     <string name="bd_ovelay_map_description">百度地图的绘制</string>
     <string name="bd_poi">周边检索功能</string>
+    <string name="bd_route">线路规划</string>
+    <string name="bd_trace">鹰眼轨迹</string>
+    <string name="bd_rail">地理围栏</string>
+    <string name="bd_navigation">导航</string>
 </resources>
