@@ -39,6 +39,10 @@ import com.example.cs_android.baidumap.utils.ImageUtils;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * POI搜索页
+ */
+
 public class PoiActivity extends AppCompatActivity implements View.OnClickListener {
     private EditText mEtCity;
     private AutoCompleteTextView mActvSearchkey;

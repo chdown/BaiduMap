@@ -15,6 +15,9 @@ import com.baidu.location.Poi;
 import com.example.cs_android.baidumap.R;
 
 import java.util.List;
+/**
+ * 定位
+ */
 
 public class LocationActivity extends AppCompatActivity {
 

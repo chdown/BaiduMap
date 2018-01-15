@@ -35,6 +35,10 @@ import java.util.List;
 
 import static android.R.attr.tag;
 
+/**
+ * 轨迹上传显示页
+ */
+
 public class TraceActivity extends AppCompatActivity {
 
     // 轨迹服务ID

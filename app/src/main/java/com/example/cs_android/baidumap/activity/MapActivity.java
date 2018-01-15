@@ -20,6 +20,10 @@ import com.example.cs_android.baidumap.R;
 
 import java.util.Random;
 
+/**
+ * 地图显示页
+ */
+
 public class MapActivity extends AppCompatActivity {
     private TextureMapView mMapView;
     private BaiduMap mBaiduMap;

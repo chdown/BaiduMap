@@ -40,6 +40,10 @@ import com.example.cs_android.baidumap.utils.DrivingRouteOverlay;
 import com.example.cs_android.baidumap.utils.TransitRouteOverlay;
 import com.example.cs_android.baidumap.utils.WalkingRouteOverlay;
 
+/**
+ * 路线规划页
+ */
+
 public class RouteActivity extends AppCompatActivity {
 
     private BaiduMap mBaiduMap;

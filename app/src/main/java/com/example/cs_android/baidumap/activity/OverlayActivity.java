@@ -27,6 +27,10 @@ import com.example.cs_android.baidumap.R;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 绘制maker，面的页
+ */
+
 public class OverlayActivity extends AppCompatActivity {
 
 

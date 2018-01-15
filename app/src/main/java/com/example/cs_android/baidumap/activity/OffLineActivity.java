@@ -24,6 +24,10 @@ import com.example.cs_android.baidumap.R;
 
 import java.util.ArrayList;
 
+/**
+ * 离线地图下载使用页面
+ */
+
 public class OffLineActivity extends AppCompatActivity implements MKOfflineMapListener {
 
     private MKOfflineMap mOffline;

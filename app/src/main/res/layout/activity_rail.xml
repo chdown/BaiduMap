@@ -1,10 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.cs_android.baidumap.activity.RailActivity">
+    android:orientation="vertical"
+    tools:context="com.example.cs_android.baidumap.activity.MapActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <com.baidu.mapapi.map.TextureMapView
+        android:id="@+id/texture_map"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </com.baidu.mapapi.map.TextureMapView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/et_radius"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:hint="半径"/>
+
+        <Button
+            android:layout_width="45dp"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:onClick="rail_client"
+            android:text="客户端"/>
+
+        <Button
+            android:layout_width="45dp"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:onClick="rail_server"
+            android:text="服务端"/>
+
+        <Button
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:onClick="history"
+            android:text="历史报警"/>
+
+        <Button
+            android:layout_width="45dp"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:onClick="oneself"
+            android:text="监控者状态"/>
+
+        <Button
+            android:layout_width="45dp"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:onClick="location"
+            android:text="坐标位状态"/>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

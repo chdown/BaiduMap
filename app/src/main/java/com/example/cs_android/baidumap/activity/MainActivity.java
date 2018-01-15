@@ -17,6 +17,10 @@ import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import io.reactivex.functions.Consumer;
 
+/**
+ * 主页
+ */
+
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
