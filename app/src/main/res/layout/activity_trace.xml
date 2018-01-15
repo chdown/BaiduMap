@@ -1,10 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.cs_android.baidumap.activity.TraceActivity">
+    android:orientation="vertical"
+    tools:context="com.example.cs_android.baidumap.activity.MapActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <com.baidu.mapapi.map.TextureMapView
+        android:id="@+id/texture_map"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </com.baidu.mapapi.map.TextureMapView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_start_server"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:onClick="onclick"
+            android:text="开启服务"/>
+
+        <Button
+            android:id="@+id/btn_stop_server"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:onClick="onclick"
+            android:text="停止"/>
+
+        <Button
+            android:id="@+id/btn_start_gather"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:onClick="onclick"
+            android:text="开启采集"/>
+
+        <Button
+            android:id="@+id/btn_stop_gather"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:onClick="onclick"
+            android:text="停止"/>
+
+        <Button
+            android:id="@+id/btn_query_trace"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:onClick="onclick"
+            android:text="查询"/>
+    </LinearLayout>
+
+
+</RelativeLayout>
