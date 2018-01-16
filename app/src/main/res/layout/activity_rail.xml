@@ -42,6 +42,13 @@
             android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
+            android:onClick="rail_list"
+            android:text="围栏列表"/>
+
+        <Button
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
             android:onClick="history"
             android:text="历史报警"/>
 

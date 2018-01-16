@@ -1,8 +1,5 @@
 package com.example.cs_android.baidumap.activity;
 
-import android.app.Notification;
-import android.app.NotificationManager;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -34,6 +31,7 @@ import com.baidu.trace.api.fence.DeleteFenceResponse;
 import com.baidu.trace.api.fence.DistrictFence;
 import com.baidu.trace.api.fence.FenceAlarmPushInfo;
 import com.baidu.trace.api.fence.FenceInfo;
+import com.baidu.trace.api.fence.FenceListRequest;
 import com.baidu.trace.api.fence.FenceListResponse;
 import com.baidu.trace.api.fence.HistoryAlarmRequest;
 import com.baidu.trace.api.fence.HistoryAlarmResponse;
@@ -126,7 +124,6 @@ public class RailActivity extends AppCompatActivity {
 
     OnTraceListener mTraceListener = new OnTraceListener() {
 
-        public int notifyId = 0;
 
         @Override
         public void onBindServiceCallback(int i, String s) {
@@ -167,14 +164,9 @@ public class RailActivity extends AppCompatActivity {
                     .append(messageType == 0x03 ? "云端" : "本地")
                     .append("围栏：").append(alarmPushInfo.getFenceName());
 
-            if (Build.VERSION.SDK_INT > Build.VERSION_CODES.JELLY_BEAN) {
-                Notification notification = new Notification.Builder(RailActivity.this)
-                        .setContentTitle("百度鹰眼报警推送")
-                        .setContentText(alarmInfo.toString())
-                        .setWhen(System.currentTimeMillis()).build();
-                NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-                notificationManager.notify(notifyId++, notification);
-            }
+            //获取信息
+            Toast.makeText(RailActivity.this, alarmInfo.toString(), Toast.LENGTH_SHORT).show();
+            mEtRadius.setText(alarmInfo.toString());
 
             alarmPushInfo.getFenceId();//获取围栏id
             alarmPushInfo.getMonitoredPerson();//获取监控对象标识
@@ -192,47 +184,64 @@ public class RailActivity extends AppCompatActivity {
         }
     };
 
+    //根据坐标查询
     public void location(View view) {
+        /**
+         * 查询监控对象在指定位置是否在围栏内，以查询服务端为例
+         * latLng：位置点
+         * fenceIds 服务端围栏编号列表，List<Long>，如传入null，表示查询所有围栏
+         */
         int tag = 10;// 请求标识
         List<Long> fenceIds = null; // 围栏编号列表
         com.baidu.trace.model.LatLng location = new com.baidu.trace.model.LatLng(40.0552720000, 116.307655000); // 位置坐标
         CoordType coordType = CoordType.bd09ll;  // 坐标类型
-        // 创建查询服务端围栏指定位置上监控状态请求实例
-        MonitoredStatusByLocationRequest request = MonitoredStatusByLocationRequest
-                .buildServerRequest(tag, serviceId, entityName, fenceIds, location, coordType);
-        // 初始化围栏监听器，参见客户端围栏
-        // 查询围栏监控者状态
+        MonitoredStatusByLocationRequest request = MonitoredStatusByLocationRequest .buildServerRequest(tag, serviceId,
+                entityName, fenceIds, location, coordType);
+        //发起查询请求
         mTraceClient.queryMonitoredStatusByLocation(request, mFenceListener);
+
     }
 
+    //查询指定监控对象状态
     public void oneself(View view) {
+        /**
+         * 查询监控对象是否在围栏内，以查询服务端为例
+         * fenceIds：服务端围栏编号列表，List<Long> 传入null指定查询在所有围栏中的信息
+         * entityName：监控对象标识
+         */
         int tag = 9; // 请求标识
-        // 围栏编号列表，传 null，则表示查询该 entity 所有围栏。若填写fenceId 列表，则查询指定围栏的状态
-        List<Long> fenceIds = null;
-        // 创建查询服务端围栏监控状态请求
-        MonitoredStatusRequest request = MonitoredStatusRequest.buildServerRequest(tag,
-                serviceId, entityName, fenceIds);
-        // 初始化围栏监听器，参见客户端围栏
-        // 查询围栏监控者状态
+        MonitoredStatusRequest request = MonitoredStatusRequest.buildServerRequest(tag, serviceId,entityName, null);
+        //发起查询请求
         mTraceClient.queryMonitoredStatus(request, mFenceListener);
+
     }
 
     public void history(View view) {
+
+        /**
+         * 以查询服务端为例
+         * startTime：开始时间
+         * endTime：结束时间
+         * fenceIds：服务端围栏编号列表，List<Long>，如传入null，表示查询所有围栏
+         */
         int tag = 8;// 请求标识
         long startTime = System.currentTimeMillis() / 1000 - 30 * 60;// 开始时间
         long endTime = System.currentTimeMillis() / 1000; // 结束时间
-        CoordType coordTypeOutput = CoordType.bd09ll;  // 坐标类型
-        // 围栏编号列表
-        List<Long> fenceIds = new ArrayList<Long>();
-        fenceIds.add(100L);
-        fenceIds.add(101L);
-        fenceIds.add(102L);
-        // 创建服务端围栏历史报警请求
-        HistoryAlarmRequest request = HistoryAlarmRequest
-                .buildServerRequest(tag, serviceId, startTime, endTime, entityName, fenceIds, coordTypeOutput);
-        // 初始化围栏监听器,参见创建客户端围栏
-        // 查询围栏历史报警信息
+        CoordType coordType = CoordType.bd09ll;  // 坐标类型
+        List<Long> fenceIds = null;
+        HistoryAlarmRequest request = HistoryAlarmRequest.buildServerRequest(tag, serviceId, startTime,
+                endTime, entityName, fenceIds, coordType);
+        //发起查询请求
         mTraceClient.queryFenceHistoryAlarmInfo(request, mFenceListener);
+
+    }
+
+    //查询围栏列表
+    public void rail_list(View view) {
+        int tag = 7;// 请求标识
+        FenceListRequest request = FenceListRequest.buildServerRequest(tag,serviceId, entityName, null,CoordType.bd09ll);
+        //发起查询围栏请求
+        mTraceClient.queryFenceList(request, mFenceListener);
     }
 
 
@@ -349,7 +358,6 @@ public class RailActivity extends AppCompatActivity {
     }
 
 
-
     // 初始化围栏监听器
     OnFenceListener mFenceListener = new OnFenceListener() {
         // 创建围栏回调
@@ -359,6 +367,7 @@ public class RailActivity extends AppCompatActivity {
                 Toast.makeText(RailActivity.this, "创建围栏回调成功", Toast.LENGTH_SHORT).show();
             }
         }
+
         // 更新围栏回调
         @Override
         public void onUpdateFenceCallback(UpdateFenceResponse response) {
@@ -366,6 +375,7 @@ public class RailActivity extends AppCompatActivity {
                 Toast.makeText(RailActivity.this, "更新围栏回调成功", Toast.LENGTH_SHORT).show();
             }
         }
+
         // 删除围栏回调
         @Override
         public void onDeleteFenceCallback(DeleteFenceResponse response) {
@@ -373,6 +383,7 @@ public class RailActivity extends AppCompatActivity {
                 Toast.makeText(RailActivity.this, "删除围栏回调成功", Toast.LENGTH_SHORT).show();
             }
         }
+
         // 围栏列表回调
         @Override
         public void onFenceListCallback(FenceListResponse response) {
@@ -380,8 +391,11 @@ public class RailActivity extends AppCompatActivity {
                 Toast.makeText(RailActivity.this, "围栏列表回调成功", Toast.LENGTH_SHORT).show();
             }
             //获取围栏列表响应结果
-            response.getSize();//围栏个数
+            int size = response.getSize();//围栏个数
             List<FenceInfo> fenceInfos = response.getFenceInfos();//获取围栏信息列表
+            if (size!=0){
+                Toast.makeText(RailActivity.this, "共查询处"+size+"条围栏", Toast.LENGTH_SHORT).show();
+            }
             for (FenceInfo fenceInfo : fenceInfos) {
                 switch (fenceInfo.getFenceShape()) {//判断围栏形状
                     case circle://圆形
@@ -415,6 +429,7 @@ public class RailActivity extends AppCompatActivity {
 
             }
         }
+
         // 监控状态回调
         @Override
         public void onMonitoredStatusCallback(MonitoredStatusResponse response) {
@@ -442,6 +457,7 @@ public class RailActivity extends AppCompatActivity {
                 }
             }
         }
+
         // 指定位置
         @Override
         public void onMonitoredStatusByLocationCallback(MonitoredStatusByLocationResponse response) {
@@ -449,6 +465,7 @@ public class RailActivity extends AppCompatActivity {
                 Toast.makeText(RailActivity.this, "指定位置查询成功", Toast.LENGTH_SHORT).show();
             }
         }
+
         // 历史报警回调
         @Override
         public void onHistoryAlarmCallback(HistoryAlarmResponse response) {
