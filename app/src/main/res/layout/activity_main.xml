@@ -60,6 +60,7 @@
         android:background="@drawable/btn_bg_white"
         android:onClick="onclick"
         android:text="@string/bd_trace"/>
+
     <Button
         android:id="@+id/btn_rail"
         android:layout_width="match_parent"
