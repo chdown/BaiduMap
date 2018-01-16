@@ -65,10 +65,6 @@ public class MainActivity extends AppCompatActivity {
             case R.id.btn_rail:
                 startCls(RailActivity.class);
                 break;
-            //导航
-            case R.id.btn_navigation:
-                startCls(NavigationActivity.class);
-                break;
         }
     }
 
